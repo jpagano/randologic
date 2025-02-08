@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getSolution } from "../lib/solution";
+import RandomWord from "../components/random-word";
+
+const words = await getSolution();
+---
+
+<Layout>
+  <div class="flex-1 flex flex-col items-center justify-center gap-4 w-full">
+    <h1 class="text-4xl font-black">
+      <RandomWord words={words} client:only />
+    </h1>
+  </div>
+</Layout>

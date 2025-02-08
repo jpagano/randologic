@@ -1,0 +1,33 @@
+---
+import "@fontsource-variable/inter";
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/randologic/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Randològic</title>
+    <meta
+      name="description"
+      content="A cada refresc, una solució aleatòria del joc Paraulògic"
+    />
+  </head>
+  <body
+    class="flex flex-col items-center justify-center gap-4 h-dvh text-center p-4"
+  >
+    <slot />
+    <span class="text-sm italic">
+      <strong>Ultima actualització:</strong>
+      {
+        new Intl.DateTimeFormat("ca-ES", {
+          dateStyle: "full",
+          timeStyle: "medium",
+        }).format(new Date())
+      }
+    </span>
+  </body>
+</html>
