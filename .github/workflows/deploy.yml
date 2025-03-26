@@ -4,7 +4,7 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [ master ]
+    branches: [master]
   schedule:
     - cron: "2 0 * * *"
   # Allows you to run this workflow manually from the Actions tab on GitHub.
@@ -27,10 +27,12 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
       - name: Install playwright browsers
         run: npx playwright install --with-deps
       - name: Install, build, and upload your site output
-        uses: withastro/action@v3
+        uses: withastro/action@v4
         with:
           path: . # The root location of your Astro project inside the repository. (optional)
           node-version: 22 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
